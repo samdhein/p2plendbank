@@ -11,8 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.samhein.p2plendbank.models.Account;
 import com.samhein.p2plendbank.models.LoginUser;
 import com.samhein.p2plendbank.models.User;
+import com.samhein.p2plendbank.services.AccountService;
 import com.samhein.p2plendbank.services.UserService;
 
 
@@ -22,6 +24,9 @@ public class UserController {
  	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private AccountService accountService;
 	
 	 
 	@GetMapping("/")
@@ -45,6 +50,15 @@ public class UserController {
 	        return "index.jsp";
 	    } else { // successful
 	    	session.setAttribute("userId", newUser.getId());
+	    	//create their account
+	    	Account account = new Account();
+	    	//associate it with newUser
+	    	account.setUser(newUser);
+	    	//set their starting balance to $10
+	    	account.setAccountBalance(10.00);
+	    	//save account
+	    	accountService.saveAccount(account);
+	    	//redirect to dashboard
 	       	return "redirect:/dashboard";
 	    }
 	}

@@ -69,6 +69,9 @@
 			   		<button class="btn btn-primary">Submit</button>
 		   		</form:form>
 	   		</div>
+	   		<div>
+	   			<p>Create an account today for $10.00 in free lending money!</p>
+	   		</div>
 	   </div>
 	</body>
 </html>

@@ -26,8 +26,8 @@ public class Account {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Min(value=0, message="Account balance must not be negative")
-	private Long accountBalance;
+	@Min(value=0, message="Insufficient funds--account balance cannot go below $0.00")
+	private Double accountBalance;
 	
 	// created and updated at
 	@Column(updatable=false)
@@ -64,11 +64,11 @@ public class Account {
 		this.id = id;
 	}
 
-	public Long getAccountBalance() {
+	public Double getAccountBalance() {
 		return accountBalance;
 	}
 
-	public void setAccountBalance(Long accountBalance) {
+	public void setAccountBalance(Double accountBalance) {
 		this.accountBalance = accountBalance;
 	}
 

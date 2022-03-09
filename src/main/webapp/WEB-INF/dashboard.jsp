@@ -23,7 +23,7 @@
 		<h1>Welcome, ${user.firstName }</h1>
 	</div>
 	<div>
-		<p>Your Account Balance $____.__</p>
+		<p>Your Account Balance: $${user.account.accountBalance }</p>
 		<a href="/">Deposit/Withdraw Funds</a>
 		<a href="/">Send Money</a>
 	</div>

@@ -69,7 +69,7 @@ public class User {
  	protected void onCreate(){
  		this.createdAt = new Date();
  	}
- 	
+ 	 	
  	@PreUpdate
  	protected void onUpdate(){
  		this.updatedAt = new Date();
