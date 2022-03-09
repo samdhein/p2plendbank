@@ -54,7 +54,7 @@ public class UserController {
 	    	Account account = new Account();
 	    	//associate it with newUser
 	    	account.setUser(newUser);
-	    	//set their starting balance to $10
+	    	//set starting balance to $10
 	    	account.setAccountBalance(10.00);
 	    	//save account
 	    	accountService.saveAccount(account);

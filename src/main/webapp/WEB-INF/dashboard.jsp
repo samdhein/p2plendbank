@@ -24,7 +24,7 @@
 	</div>
 	<div>
 		<p>Your Account Balance: $${user.account.accountBalance }</p>
-		<a href="/">Deposit/Withdraw Funds</a>
+		<a href="/cashops">Deposit/Withdraw Funds</a>
 		<a href="/">Send Money</a>
 	</div>
 	<div>
