@@ -45,7 +45,7 @@ public class UserController {
 	        return "index.jsp";
 	    } else { // successful
 	    	session.setAttribute("userId", newUser.getId());
-	       	return "redirect:/shows";
+	       	return "redirect:/dashboard";
 	    }
 	}
 	 
@@ -61,7 +61,7 @@ public class UserController {
 	     }
 	     
 	     session.setAttribute("userId", user.getId());
-	     return "redirect:/shows";
+	     return "redirect:/dashboard";
 	 }
 
 	 @GetMapping("/logout")
