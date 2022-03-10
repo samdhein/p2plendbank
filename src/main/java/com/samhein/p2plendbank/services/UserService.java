@@ -1,5 +1,6 @@
 package com.samhein.p2plendbank.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.mindrot.jbcrypt.BCrypt;
@@ -78,6 +79,9 @@ public class UserService {
     	} else {
     		return null;
     	}
+    }
+    public List<User> allUsers(){
+    	return (List<User>) userRepo.findAll();
     }
     
 

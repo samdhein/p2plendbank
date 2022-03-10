@@ -11,38 +11,27 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Welcome, ${user.firstName }</title>
+    <title>Send Money</title>
     <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/main.css"> <!-- change to match your file/naming structure -->
     <script src="/webjars/jquery/jquery.min.js"></script>
     <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div>
-		<a href="/logout">Log Out</a>
-		<h1>Welcome, ${user.firstName }</h1>
-	</div>
-	<div>
-		<p>Your Account Balance: $${user.account.accountBalance }</p>
-		<a href="/cashops">Deposit/Withdraw Funds</a>
-		<a href="/transfer">Send Money</a>
-	</div>
-	<div>
-		<p>Funded Loans</p>
-		<a href="/">Loan# #### - Borrower Name - Outstanding Balance </a>
-		<a href="/">Loan# #### - Borrower Name - Outstanding Balance </a>
-		<a href="/">FUND A NEW LOAN</a>
-	</div>
-	<div>
-		<p>Total Borrowing:$____.__</p>
-		<a href="/">Loan# #### - Lender Name - Outstanding Balance </a>
-		<a href="/">Loan# #### - Lender Name - Outstanding Balance </a>
-	</div>
-	<div>
-		<p>Cash Balance</p>
-		<a href="/">Deposit/Withdraw Funds</a>
-		<a href="/">Send Money</a>
-	</div>			
+   <div class="container mt-5">
+	   <p>You have reached the Send Money page.</p>
+	   <div>
+		   	<form>
+		   		<label>Recipient</label>
+		   		<select name="recipient">
+		   			<c:forEach var="user" items="${allUsers }">
+		   				<option value="${user.id }">${user.firstName } ${user.lastName}</option>
+		   			</c:forEach>
+		   		</select>
+		   		<label>Amount</label>
+		   	</form>
+	   </div>
+   </div>
    
 </body>
 </html>

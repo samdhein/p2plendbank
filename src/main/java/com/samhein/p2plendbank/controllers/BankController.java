@@ -59,34 +59,42 @@ public class BankController {
 			){
 		Account updatedAccount = accountService.findOne(acctId);
 		Double currentBal = updatedAccount.getAccountBalance();
-		if (amount<0) { // breaks when amount is zero; doubles are non-nullable
+		if (amount<0) { // check positive amount input. breaks when amount is zero; doubles are non-nullable
 			model.addAttribute("error", "Transaction amount must be a positive number");
 			model.addAttribute("acctBal", currentBal);
 			model.addAttribute("acctId", updatedAccount.getId());
 			return "cashops.jsp";
 		}
-		if (transactionType.equals("withdraw")){
+		if (transactionType.equals("withdraw")){ // error if currentBal insufficient for withdrawal
 			if(amount>currentBal) {
 				model.addAttribute("error", "Insufficient funds");
 				model.addAttribute("acctBal", currentBal);
 				model.addAttribute("acctId", updatedAccount.getId());
 				return "cashops.jsp";
-			} else {
+			} else { // process withdrawal
 			Double updatedBal = updatedAccount.getAccountBalance() - amount;
 			updatedAccount.setAccountBalance(updatedBal);
 			accountService.saveAccount(updatedAccount);
 			return "redirect:/dashboard";
 			}
-		} else {
+		} else { // process deposit
 			Double updatedBal = updatedAccount.getAccountBalance() + amount;
 			updatedAccount.setAccountBalance(updatedBal);
 			accountService.saveAccount(updatedAccount);
 			return "redirect:/dashboard";
 		}
-		
-		
 	}
-		
+
+	// send money		
+	@GetMapping("/transfer")
+	public String transfer(HttpSession session, Model model) {
+		if (session.getAttribute("userId")==null){
+			return "redirect:/";
+		} else {
+			model.addAttribute("allUsers", userService.allUsers());
+			return "transfer.jsp";
+		}
+	}
 		
 	
 }
