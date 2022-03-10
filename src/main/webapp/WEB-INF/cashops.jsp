@@ -27,14 +27,18 @@
 		   	</div>
 		   	<div>
 		   		<form action="/cashops" method="POST">
-		   			<input type="hidden" name="acctId" value="${user.account.id }" />
-		   			<select>
+		   			<input type="hidden" name="acctId" value="${acctId }" />
+		   			<input type="hidden" name="userId" value="${userId }" />
+		   			<select name="transactionType">
 		   				<option value="deposit">Deposit</option>
 		   				<option value="withdraw">Withdraw</option>	   				
 		   			</select>
 		   			<input type="number" step="0.01" name="amount" placeholder="0.00"/>
 		   			<button>Submit</button>
 		   		</form>
+		   	</div>
+		   	<div>
+		   		<p>${error }</p>
 		   	</div>
 	   	</div>
 	   	
